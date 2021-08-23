@@ -17,21 +17,53 @@ The general worklow is as follows:
 - Install Node.js [link](https://nodejs.org/en/download/)
 
 ## First time setup
+- Clone project repo
+    - Open CMD (Hit WinKey + Write "cmd" + Hit Enter) and write:
+
+    cd %userprofile%
+    mkdir source
+    cd source
+    git clone https://github.com/nikitcha/ceebios-pdfdoi.git
+
 - Pull docker container
-    - Open CMD (Hit WinKey + Write "cmd" + Hit Enter)
+    - Open CMD and write:
+
     <code>docker pull axarev/parsr</code>
 
 
 - Create Python virtual environment and install backend dependencies
+    - Open CMD and write:
+    
+    <code>
+    cd %userprofile%
+    mkdir envs
+    cd envs
+    python -m venv pdfdoi
+    pdfdoi\Scripts\activate
+    cd %userprofile%\source\ceebios-pdfdoi\backend
+    pip install -r requirements.txt
+    </code>
 
-## Starting
+## Starting the application
 - Run Parsr API
-docker run -p 3001:3001 axarev/parsr
+    - Open CMD and write:
+    
+    <code>docker run -p 3001:3001 axarev/parsr</code>
 
 - Run backend
-cd backend
-uvicorn main:app --reload
+    - Open CMD and write:
 
-- Run front end
-cd frontend
-npm run start
+    <code>
+    %userprofile%\envs\pdfdoi\Scripts\activate
+    cd %userprofile%\source\ceebios-pdfdoi\backend
+    uvicorn main:app --reload
+    </code>
+
+- Run frontend
+    <code>
+    cd %userprofile%\source\ceebios-pdfdoi\frontend
+    npm run start
+    </code>
+
+
+## Usage
