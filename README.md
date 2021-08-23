@@ -19,7 +19,7 @@ The general worklow is as follows:
 ## First time setup
 - Pull docker container
     - Open CMD (Hit WinKey + Write "cmd" + Hit Enter)
-    >> docker pull axarev/parsr
+    <code>docker pull axarev/parsr</code>
 
 
 - Create Python virtual environment and install backend dependencies
