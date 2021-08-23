@@ -56,14 +56,14 @@ yarn install
 
 ## Starting the application
 - Run Parsr API
-    - Open CMD and write:
+    - Open CMD and paste:
     
 ```sh
 docker run -p 3001:3001 axarev/parsr
 ```
 
 - Run backend
-    - Open CMD and write:
+    - Open CMD and paste:
 
 ```sh
 %userprofile%\envs\pdfdoi\Scripts\activate
@@ -72,7 +72,7 @@ uvicorn main:app --reload
 ```
 
 - Run frontend
-    - Open CMD and write:
+    - Open CMD and paste:
 ```sh
 cd %userprofile%\source\ceebios-pdfdoi\frontend
 npm run start
