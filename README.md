@@ -31,7 +31,7 @@ The general worklow is as follows:
     - Open CMD and write:
 
 ```sh
-docker pull axarev/parsr</code>
+docker pull axarev/parsr
 ```
 
 - Create Python virtual environment and install backend dependencies
@@ -52,7 +52,7 @@ pip install -r requirements.txt
     - Open CMD and write:
     
 ```sh
-docker run -p 3001:3001 axarev/parsr</code>
+docker run -p 3001:3001 axarev/parsr
 ```
 
 - Run backend
