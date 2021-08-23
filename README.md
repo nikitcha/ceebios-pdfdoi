@@ -18,7 +18,7 @@ The general worklow is as follows:
 
 ## First time setup
 - Clone project repo
-    - Open CMD (Hit WinKey + Write "cmd" + Hit Enter) and write:
+    - Open CMD (Hit WinKey + Write "cmd" + Hit Enter) and paste:
 
 ```sh
     cd %userprofile%
@@ -28,14 +28,14 @@ The general worklow is as follows:
 ```
 
 - Pull docker container
-    - Open CMD and write:
+    - Open CMD and paste:
 
 ```sh
 docker pull axarev/parsr
 ```
 
 - Create Python virtual environment and install backend dependencies
-    - Open CMD and write:
+    - Open CMD and paste:
     
 ```sh
 cd %userprofile%
@@ -45,6 +45,13 @@ python -m venv pdfdoi
 pdfdoi\Scripts\activate
 cd %userprofile%\source\ceebios-pdfdoi\backend
 pip install -r requirements.txt
+```
+
+- Install Node.js dependencies
+    - Open CMD and paste:
+```sh
+cd %userprofile%\source\ceebios-pdfdoi\frontend
+yarn install
 ```
 
 ## Starting the application
