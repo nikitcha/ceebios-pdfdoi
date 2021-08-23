@@ -72,6 +72,7 @@ uvicorn main:app --reload
 ```
 
 - Run frontend
+    - Open CMD and write:
 ```sh
 cd %userprofile%\source\ceebios-pdfdoi\frontend
 npm run start
