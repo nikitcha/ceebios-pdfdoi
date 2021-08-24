@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react'
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { Card, Button } from 'react-bootstrap';
 
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
@@ -10,7 +11,6 @@ const palette = {
   "title":'rgb(251, 32, 86)',
   "o":'rgb(100,100,100)'
 }
-
 
 class App extends React.Component {
   constructor(props) {
@@ -163,45 +163,102 @@ class App extends React.Component {
     this.setState({data: a});
   }  
 
+  getFileActions() {
+    return (
+      <div >
+      <button className="btn btn-primary mx-1" onClick={()=>this.onClickConvert()}>PDF to JSON</button>
+      <button className="btn btn-success mx-1" onClick={()=>this.onClickTokens()}>Tokenize</button>
+    </div>
+    )
+  }
+
+  getDocCounter() {
+    return (
+    <div>
+      <input className="mb-1" placeholder="0" id='page' style={{'width':"30px",'marginRight':"10px"}}/>
+    </div>
+    )
+  }
+
+  getDocTitle() {
+    return (
+      <div className='doc-title'>
+       <div id='doc-title'>{this.state.data.title}</div>
+      </div>
+    )
+  }
+
+  getDocActions() {
+    return (
+      <div >
+      <button className="btn btn-success mx-1" onClick={()=>this.onClickGo()}>Fetch</button>
+      <button className="btn btn-info mx-1" onClick={()=>this.onClickPrev()}>Prev</button>
+      <button className="btn btn-primary mx-1" onClick={()=>this.onClickNext()}>Next</button>
+    </div>
+    )
+  }
+
+  getAnnotations() {
+    return (
+      <div >
+      <button className="btn btn-secondary mx-1" onClick={()=>this.onClickSave()}>Save</button>
+      <button className="btn btn-danger mx-1"onClick={()=>this.onClickReset()}>Reset</button>
+    </div>
+    )
+  }
+
+  getExport() {
+    return (
+    <div>
+      <button className="btn btn-primary mx-1" onClick={()=>this.onClickGetDois()}>Go</button>
+    </div>
+    )
+  }
+
+  getClasses() {
+    return (
+    <div id="container-classes" style={{"width":"100%","marginTop":"20px","backgroundColor":"white"}}>
+      { this.renderClasses() }
+    </div>
+    )
+  }  
+
+  getWords() {
+    return (
+    <div id="container-words" onMouseUp ={(e)=>this.getSelection(e)} style={{"width":"800px","marginTop":"20px", "marginLeft":"400px",'position':'absolute','zIndex':'0'}}>
+      { this.renderWords() }
+    </div> 
+    )
+  }  
+  
+  cardWrap(title, text, div) {
+    return (
+    <Card>
+    <Card.Body>
+      <Card.Title>{title}</Card.Title>
+      <Card.Text>
+        {text}
+      </Card.Text>
+      {div}
+    </Card.Body>
+    </Card> 
+    )  
+  }
+
   render() {
     return (
       <div className="App">
-        <div className="App list-group-item" 
-        style={{"width":"380px","marginTop":"10px","marginLeft":"10px", "backgroundColor":"white",'zIndex':'1', 'position':'fixed', 'height':"400px"}}>
-          <div style={{'margin':'10px'}}>
-            File Actions: 
-            <button className="btn btn-primary mx-1" onClick={()=>this.onClickConvert()}>PDF to JSON</button>
-            <button className="btn btn-success mx-1" onClick={()=>this.onClickTokens()}>Tokenize</button>
-          </div>
-          <div style={{'margin':'10px'}}>
-            Doc Number: <input className="mb-1" placeholder="0" id='page' style={{'width':"30px",'marginRight':"10px"}}/>
-          </div>
-          <div style={{'margin':'10px'}}>
-            Doc Title: <div id='doc-title'>{this.state.data.title}</div>
-          </div>
-          <div style={{'marginTop':'10px'}}>
-            Doc Actions: 
-            <button className="btn btn-success mx-1" onClick={()=>this.onClickGo()}>Fetch</button>
-            <button className="btn btn-info mx-1" onClick={()=>this.onClickPrev()}>Prev</button>
-            <button className="btn btn-primary mx-1" onClick={()=>this.onClickNext()}>Next</button>
-          </div>
-          <div style={{'marginTop':'10px'}}>
-            Annotations:
-            <button className="btn btn-secondary mx-1" onClick={()=>this.onClickSave()}>Save</button>
-            <button className="btn btn-danger mx-1"onClick={()=>this.onClickReset()}>Reset</button>
-          </div>
-          <div style={{'marginTop':'10px'}}>
-            <button className="btn btn-primary mx-1" onClick={()=>this.onClickGetDois()}>Export DOIs</button>
-          </div>
-          <div id="container-classes" style={{"width":"100%","marginTop":"20px","backgroundColor":"white"}}>
-            <span>Select Class: </span>
-            { this.renderClasses() }
-          </div>
+        <div className="App list-group-item">
+          {this.cardWrap('File Actions', 'Wait for conversion to finish and then hit Tokenize to extract the text',this.getFileActions())}
+          {this.cardWrap('Document Actions', 'Tokenizations needs to have run (check backend/annotations.json)',this.getDocActions())}
+          {this.cardWrap('Document Counter', 'If multiple documents you can input any number and Fetch',this.getDocCounter())}
+          {this.cardWrap('Document Title', '',this.getDocTitle())}          
+          {this.cardWrap('Annotation Actions', 'Hit Save after annotating the page',this.getAnnotations())}
+          {this.cardWrap('Export DOIs', 'Exports DOI data dois.json',this.getExport())}
+          {this.cardWrap('Select Class', 'Click on class name to activate and then select text to annotate', this.getClasses())}
         </div>
-        <div id="container-words" onMouseUp ={(e)=>this.getSelection(e)} style={{"width":"800px","marginTop":"20px", "marginLeft":"400px",'position':'absolute','zIndex':'0'}}>
-            { this.renderWords() }
-          </div>
-      </div>
+        {this.getWords()}        
+      </div>          
     );    
   }
 }

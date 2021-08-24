@@ -2,3 +2,11 @@
   text-align: center;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
+
+.App .list-group-item {
+  width: 380px;
+  margin-top: 5px;
+  background-color: rgb(230,230,230);
+  z-index: 1;
+  position: fixed;
+}

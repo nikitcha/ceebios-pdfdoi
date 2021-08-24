@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 # Big files
-/pdfs
-/jsons
+/pdfs/**
+/jsons/**
 annotations.json
 dois.json

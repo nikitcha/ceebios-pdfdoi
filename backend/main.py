@@ -4,6 +4,7 @@ from database import get_page, update_page
 from pydantic import BaseModel
 import ml
 import database
+import os
 
 app = FastAPI()
 origins = ['http://localhost:3000']
@@ -14,6 +15,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+if 'jsons' not in os.listdir():
+    os.mkdir('jsons')
+
+if 'pdfs' not in os.listdir():
+    os.mkdir('pdfs')
 
 class Page(BaseModel):
     id: int
