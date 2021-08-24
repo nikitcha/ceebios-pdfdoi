@@ -80,3 +80,7 @@ npm run start
 
 
 ## Usage
+
+Here is full cycle example on Youtube: https://youtu.be/Dqm-KcWPxTk
+
+[![SC2 Video](https://img.youtube.com/vi/Dqm-KcWPxTk/0.jpg)](http://www.youtube.com/watch?v=Dqm-KcWPxTk)
