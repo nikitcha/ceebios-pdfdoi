@@ -9,6 +9,7 @@ The general worklow is as follows:
 - Annotated the text manually using the front end
 - Extract DOI data using the Crossref and Unpaywall APIs given the annotated reference titles
 
+Note: Front end has only been tested in Microsoft Edge browser.
 
 ## Dependencies
 - Enable WSL on Windows [link](https://windowsloop.com/enable-wsl-windows-10-home/#:~:text=Steps%20to%20Enable%20WSL%20on%20Windows%2010%20Home,files%20and%20enables%20the%20feature.%20More%20items...%20)
@@ -51,6 +52,7 @@ pip install -r requirements.txt
     - Open CMD and paste:
 ```sh
 cd %userprofile%\source\ceebios-pdfdoi\frontend
+npm install --global yarn
 yarn install
 ```
 
